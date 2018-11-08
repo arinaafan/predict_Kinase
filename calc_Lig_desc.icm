@@ -1,0 +1,22 @@
+#!/usr/local/bin/icm -p/opt/icm
+
+read library
+call _macro
+
+s_if = Getarg("if" "s_")
+
+openFile s_if
+
+rename table[0] "tab1"
+add column tab1 function="Nof_Atoms(mol,'[!H]')" index=3 name="nof_Atoms" append
+add column tab1 function="Nof_RotB(mol)" index=4 name="nof_RotB" append
+
+write table tab1 "ligands.tab" header separator='\t'
+
+for i=1,Nof(tab1)
+    parrayToMol tab1.mol [i]
+    file=Name(a_)[1]+'.mol2'
+    write mol2 a_ file
+endfor
+
+quit

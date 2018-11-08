@@ -1,0 +1,49 @@
+#!/home/arina/icm-3.8-5/icm64 -p/home/arina/icm-3.8-5/ 
+
+l_commands = no # echo off
+l_info     = yes
+l_warn     = yes
+l_redraw   = no
+l_graph    = no
+
+# count time spent in this script
+s_icmPrompt="%t> "
+
+recfile=Getarg("if2" "s_") # 'recept/1CM8.pdb'
+ligfile=Getarg("if1" "s_") # 'dock/screenset.1CM8.docked.sdf'
+mypath=Getarg("outp" "s_") # 'compl/'
+table_file=Getarg("outpf" "s_") # 'compl.tab'
+
+read library
+call _macro
+
+read pdb recfile
+copy a_
+convertObject a_copy. 1==1 yes yes yes yes yes no ""+( 1==2 ? "water=tight ":"" )
+
+openFile ligfile
+rename table [Nof(table)] 'tab'
+
+for i=1,Nof(tab)
+
+   parrayToMol tab.mol [i]
+   convert3Dto3D a_ yes yes yes
+   move a_ a_2.
+
+   name_1=Name(a_1.)[1]
+   name_2=tab.NAME_ [i]
+   name_=name_1+"_"+name_2
+   rename a_ name_
+   filena=mypath +"/"+ name_ + '.pdb'
+   write pdb a_ filena
+   score=tab.minimizedAffinity [i]
+   show hbond a_H a_A
+   hb=i_out
+   calcResContactAreas a_H Sphere( a_H a_!W ) no 100
+   area1=Contact.ContactArea [1]
+   fprintf append table_file "%s\t%.2f\t%i\t%.2f\n" name_ score hb area1
+
+   delete a_H
+   endfor
+
+quit
