@@ -36,7 +36,5 @@ Kinases PDB files that should be used for our method are prepared as described i
 
 The main script for activity prediction models' training can be found in Jupyter notebook file `train_main_model.ipynb`, the script contains descriptors table processing and construction and training of 2 activity predicting models: DNN model, built with Keras and Random Forest model from Scikit-learn library.
 
-<img style="float: left; width:50%" src="DNN_scat_v2.png" />
-<img style="float: left; width: 50%" src="RF_scat_v2.png" />
-
+![figure 1](preformance.png)
 
