@@ -32,7 +32,7 @@ Pipeline contains the following steps:
 5. Analyze protein-ligand contacts with PLIP (pyMol based tool).
 6. Join tables into summary descriptors table 'test_compl_descr.tab' with R.
 
-Kinases PDB files that should be used for our method are prepared as described in the paper ... and available in ... . Receptors list is available in file `recept.tab`. Number of descriptors associated with receptors are already pre-calculated and available in `tarSim_allPairs.tab`
+Kinases PDB files that should be used for docking can be found in `recept.tar.gz`, structures were prepared as described in the paper ... . Receptors list is available in file `recept.tab`. Number of descriptors associated with receptors are already pre-calculated and available in `tarSim_allPairs.tab`
 
 The main script for activity prediction models' training can be found in Jupyter notebook file `train_main_model.ipynb`, the script contains descriptors' processing and construction and training of the two activity predicting models: DNN model, built with Keras, and Random Forest model built with Scikit-learn library.
 
