@@ -2,7 +2,7 @@
 
 Machine learning methods utilizing various structure-based and energy-based descriptors characterizing protein-ligand interactions to predict activity for novel compounds against a broad range of human kinases.
 
-Predicting models are trained on the dataset of 104 human kinases with available PDB structures and with available experimental activity data against 1202 small-molecule compounds from PubChem BioAssay dataset ‘Navigating the Kinome’ (<https://pubchem.ncbi.nlm.nih.gov/bioassay/493040#section=Top>). Please check the paper ... for details.
+Predicting models are trained on the dataset of 104 human kinases with available PDB structures and with available experimental activity data against 1202 small-molecule compounds from PubChem BioAssay dataset ‘Navigating the Kinome’ (<https://pubchem.ncbi.nlm.nih.gov/bioassay/493040#section=Top>). 
 
 The project contains Jupyter notebook scripts for models training, separate scripts for models evaluating, saved files with pre-trained models, bash-script for the pipeline to prepare descriptors for machine learning.
 
